@@ -6,43 +6,36 @@
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 09:01:21 by brturcio          #+#    #+#             */
-/*   Updated: 2025/11/20 11:32:48 by brturcio         ###   ########.fr       */
+/*   Updated: 2025/11/23 13:03:33 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <iostream>
-
-// int	main(void)
-// {
-// 	// char	buff[512];
-
-// 	std::cout << "Hello" << std::endl;
-
-// }
-
-// #include <iostream>
-
-// int main(void)
-// {
-// 	char buff[512];
-
-// 	std::cout << "Hello World!" << std::endl;
-// 	std::cout << "Input a word: ";
-// 	std::cin >> buff;
-// 	std::cout << "You entered: [" << buff << "]" << std::endl;
-// 	return 0;
-// }
 #include <iostream>
-#include <string>
+#include <cctype>
 
-int main() {
-    std::string str;
+int	main(int ac, char **av)
+{
+	int	i;
+	int	j;
 
-    std::cout << "Input a word: ";
-
-    // En lugar de std::cin >> str; usa esto:
-    std::getline(std::cin, str);
-
-    std::cout << "You entered: [" << str << "]" << std::endl;
-    return 0;
+	if (ac <= 1)
+	{
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		return (0);
+	}
+	i = 1;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j] != '\0')
+		{
+			std::cout << (char)std::toupper(av[i][j]);
+			j++;
+		}
+		if (i != ac - 1)
+			std::cout << " ";
+		i++;
+	}
+	std::cout << std::endl;
+	return (0);
 }
