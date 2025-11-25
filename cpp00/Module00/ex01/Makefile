@@ -5,36 +5,39 @@
 #                                                     +:+ +:+         +:+      #
 #    By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/11/20 09:01:17 by brturcio          #+#    #+#              #
-#    Updated: 2025/11/25 09:24:38 by brturcio         ###   ########.fr        #
+#    Created: 2025/11/25 08:28:39 by brturcio          #+#    #+#              #
+#    Updated: 2025/11/25 10:25:24 by brturcio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= megaphone
+NAME		:= PhoneBook
 CC			:= c++
 CFLAGS		:= -Wall -Wextra -Werror -std=c++98
 
 DIR_OBJ		:= obj/
+DIR_SRCS	:= sources/
 
-SOURCES		:= megaphone.cpp
-OBJECT		:= $(addprefix $(DIR_OBJ), $(SOURCES:.cpp=.o))
+SOURCES		:= main.cpp
+OBJECTS		:= $(addprefix $(DIR_OBJ), $(SOURCES:.cpp=.o))
+
+INCLUDE		:= -Iinclude
 
 GREEN		= \033[0;32m
 RESET		= \033[0m
 
 all: $(NAME)
 
-$(DIR_OBJ)%.o:%.cpp
+$(DIR_OBJ)%.o:$(DIR_SRCS)%.cpp
 	@mkdir -p $(DIR_OBJ)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME): $(OBJECT)
-	@$(CC) $(CFLAGS) $(OBJECT) -o $(NAME)
-	@echo "$(GREEN)✔ $(NAME) Created Successfully!$(RESET)"
+$(NAME): $(OBJECTS)
+	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+	@echo "$(GREEN)✔ $(NAME) Created Successfully! $(RESET)"
 
 clean:
 	@rm -rf $(DIR_OBJ)
-	@echo "$(GREEN)✔ Objects Cleaned$(RESET)"
+	@echo "$(GREEN)✔ Objects cleaned$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
@@ -42,4 +45,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclear re
+.PHONY: all clean fclean re

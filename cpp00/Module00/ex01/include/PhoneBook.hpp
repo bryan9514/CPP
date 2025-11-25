@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 09:01:21 by brturcio          #+#    #+#             */
-/*   Updated: 2025/11/25 09:05:41 by brturcio         ###   ########.fr       */
+/*   Created: 2025/11/25 11:31:02 by brturcio          #+#    #+#             */
+/*   Updated: 2025/11/25 15:23:12 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
 #include <iostream>
-#include <cctype>
+#include <string>
+#include <sstream>
+#include "Contact.hpp"
 
-int	main(int ac, char **av)
-{
-	int	i;
-	int	j;
+/*Colors*/
+# define HGRN	"\e[0;92m"
+# define HMAG	"\e[0;95m"
+# define RST 	"\033[0m"
+# define RED 	"\033[31m"
+# define GRE	"\033[32m"
+# define YEL	"\033[33m"
+# define BLU	"\033[34m"
+# define MAG	"\033[35m"
+# define CYA	"\033[36m"
+# define WHT	"\033[37m"
 
-	if (ac <= 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
-	}
-	i = 1;
-	while (i < ac)
-	{
-		j = 0;
-		while (av[i][j] != '\0')
-		{
-			std::cout << (char)std::toupper(av[i][j]);
-			j++;
-		}
-		i++;
-	}
-	std::cout << std::endl;
-	return (0);
-}
+#endif
