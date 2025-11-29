@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   ExpresionesEnc++.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/25 11:31:19 by brturcio          #+#    #+#             */
-/*   Updated: 2025/11/26 18:25:05 by brturcio         ###   ########.fr       */
+/*   Created: 2025/11/27 10:01:55 by brturcio          #+#    #+#             */
+/*   Updated: 2025/11/27 10:12:10 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
-
 #include <iostream>
-#include <string>
 
-class Contact
+int	main(void)
 {
-	private:
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickName;
-		std::string	phoneNUmber;
-		std::string	darkestSecret;
-};
+	int a, b, c, d;
+	std::cout << "a : "; std::cin >> a;
+	std::cout << "b : "; std::cin >> b;
+	std::cout << "c : "; std::cin >> c;
+	std::cout << "d : "; std::cin >> d;
 
-#endif
+	std::cout <<"Resultado : " << (a + b) / (c + d) << std::endl;
+}

@@ -41,10 +41,10 @@
 		"new": "cpp",
 		"numbers": "cpp",
 		"ostream": "cpp",
-		"sstream": "cpp",
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"cinttypes": "cpp",
-		"typeinfo": "cpp"
+		"typeinfo": "cpp",
+		"cstring": "cpp"
 	}
 }

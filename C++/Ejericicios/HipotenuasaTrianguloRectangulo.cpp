@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   HipotenuasaTrianguloRectangulo.cpp                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/25 11:31:19 by brturcio          #+#    #+#             */
-/*   Updated: 2025/11/26 18:25:05 by brturcio         ###   ########.fr       */
+/*   Created: 2025/11/27 10:28:53 by brturcio          #+#    #+#             */
+/*   Updated: 2025/11/27 11:51:01 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
-
 #include <iostream>
-#include <string>
+#include <cmath>
 
-class Contact
+int	main(void)
 {
-	private:
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickName;
-		std::string	phoneNUmber;
-		std::string	darkestSecret;
-};
+	float	_catetoA, _catetoB;
+	double	hipotenusa;
 
-#endif
+	std::cout << "Cateto A :"; std::cin >> _catetoA;
+	std::cout << "Cateto B :"; std::cin >> _catetoB;
+
+	std::cout.precision(4);
+	hipotenusa = sqrt(pow(_catetoA, 2) + pow(_catetoB, 2));
+	std::cout << "Resultado : " << hipotenusa << std::endl;
+	return (0);
+}
