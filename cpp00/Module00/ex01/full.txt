@@ -1,0 +1,163 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/11/25 08:28:39 by brturcio          #+#    #+#              #
+#    Updated: 2025/11/25 10:25:24 by brturcio         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME		:= PhoneBook
+CC			:= c++
+CFLAGS		:= -Wall -Wextra -Werror -std=c++98
+
+DIR_OBJ		:= obj/
+DIR_SRCS	:= sources/
+
+SOURCES		:= main.cpp
+OBJECTS		:= $(addprefix $(DIR_OBJ), $(SOURCES:.cpp=.o))
+
+INCLUDE		:= -Iinclude
+
+GREEN		= \033[0;32m
+RESET		= \033[0m
+
+all: $(NAME)
+
+$(DIR_OBJ)%.o:$(DIR_SRCS)%.cpp
+	@mkdir -p $(DIR_OBJ)
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(NAME): $(OBJECTS)
+	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+	@echo "$(GREEN)✔ $(NAME) Created Successfully! $(RESET)"
+
+clean:
+	@rm -rf $(DIR_OBJ)
+	@echo "$(GREEN)✔ Objects cleaned$(RESET)"
+
+fclean: clean
+	@rm -f $(NAME)
+	@echo "$(GREEN)✔ Executable Cleaned$(RESET)"
+
+re: fclean all
+
+.PHONY: all clean fclean re
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/25 09:12:36 by brturcio          #+#    #+#             */
+/*   Updated: 2025/11/27 22:29:08 by brturcio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "PhoneBook.hpp"
+
+void	printWithColor(std::string msg, std::string color, bool endll)
+{
+	std::cout << color;
+	std::cout << msg;
+	if (endll)
+		std::cout << std::endl;
+	std::cout << RST;
+}
+
+int	main(void)
+{
+	std::string	command;
+	int			i;
+
+	i = 3;
+	while (i != 0)
+	{
+		std::stringstream ss;
+		ss << i;
+		printWithColor("You have " + ss.str() + " try", HGRN, true);
+		printWithColor("Enter a command : ", YEL, false);
+		std::cout << YEL;
+		std::cin >> command;
+		if (command == "EXIT") {
+			printWithColor("EXIT", MAG, true);
+			return (0);
+		}
+		else if(command == "SEARCH")
+			printWithColor("SEARCH", MAG, true);
+		else if(command == "ADD")
+			printWithColor("ADD", MAG, true);
+		else {
+			printWithColor("It is not a valid command", RED, true);
+			printWithColor("Valid commands : EXIT - SEARCH - ADD", GRE, true);
+		}
+		i--;
+	}
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/25 11:31:02 by brturcio          #+#    #+#             */
+/*   Updated: 2025/11/25 15:23:12 by brturcio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
+#include <iostream>
+#include <string>
+#include <sstream>
+#include "Contact.hpp"
+
+/*Colors*/
+# define HGRN	"\e[0;92m"
+# define HMAG	"\e[0;95m"
+# define RST 	"\033[0m"
+# define RED 	"\033[31m"
+# define GRE	"\033[32m"
+# define YEL	"\033[33m"
+# define BLU	"\033[34m"
+# define MAG	"\033[35m"
+# define CYA	"\033[36m"
+# define WHT	"\033[37m"
+
+#endif
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/25 11:31:19 by brturcio          #+#    #+#             */
+/*   Updated: 2025/11/26 18:25:05 by brturcio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
+#include <iostream>
+#include <string>
+
+class Contact
+{
+	private:
+		std::string	firstName;
+		std::string	lastName;
+		std::string	nickName;
+		std::string	phoneNUmber;
+		std::string	darkestSecret;
+};
+
+#endif

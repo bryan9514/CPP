@@ -6,7 +6,7 @@
 #    By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 08:28:39 by brturcio          #+#    #+#              #
-#    Updated: 2025/11/25 10:25:24 by brturcio         ###   ########.fr        #
+#    Updated: 2025/11/29 13:35:29 by brturcio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		:= -Wall -Wextra -Werror -std=c++98
 DIR_OBJ		:= obj/
 DIR_SRCS	:= sources/
 
-SOURCES		:= main.cpp
+SOURCES		:= main.cpp Contact.cpp
 OBJECTS		:= $(addprefix $(DIR_OBJ), $(SOURCES:.cpp=.o))
 
 INCLUDE		:= -Iinclude
