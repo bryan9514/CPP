@@ -6,12 +6,13 @@
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:30:16 by brturcio          #+#    #+#             */
-/*   Updated: 2025/11/29 13:43:04 by brturcio         ###   ########.fr       */
+/*   Updated: 2025/12/01 16:13:28 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+//
 void	Contact::addFirstName(std::string fname) {
 	firstName = fname;
 }
@@ -25,11 +26,34 @@ void	Contact::addNickName(std::string nname) {
 }
 
 void	Contact::addPhoneNumber(std::string phone) {
-	phone = phone;
+	phoneNumber = phone;
 }
 
 void	Contact::addDarkestSecret(std::string secrect) {
 	darkestSecret = secrect;
 }
 
-std::string	
+
+//Getters
+
+std::string	Contact::getFirstName() {
+	return (firstName);
+}
+
+std::string	Contact::getLastName() {
+	return (lastName);
+}
+
+std::string	Contact::getNickName() {
+	return (nickName);
+}
+
+std::string	Contact::getPhoneNumber() {
+	return (phoneNumber);
+}
+
+std::string	Contact::getDarkestSecret() {
+	return (darkestSecret);
+}
+
+
