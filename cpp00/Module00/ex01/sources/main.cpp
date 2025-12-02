@@ -6,14 +6,14 @@
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 09:12:36 by brturcio          #+#    #+#             */
-/*   Updated: 2025/12/01 16:38:12 by brturcio         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:44:25 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 void	printWithColor(const std::string &msg, const std::string &color,
-						bool newline = true, bool reset = true)
+		bool newline, bool reset)
 {
 	if (!color.empty())
 		std::cout << color;
@@ -25,57 +25,61 @@ void	printWithColor(const std::string &msg, const std::string &color,
 		std::cout << RST;
 }
 
-void	displayMenu()
+static void	displayMenu(void)
 {
-	std::cout << HYEL << "\n"
-	<< "╔══════════════════════════════════════════════════╗\n"
-	<< "║                    PHONEBOOK                     ║\n"
-	<< "╠══════════════════════════════════════════════════╣\n"
-	<< "║                                                  ║\n"
-	<< "║    ◉  ADD     ──  Add a new contact              ║\n"
-	<< "║    ◉  SEARCH  ──  display a specific contact     ║\n"
-	<< "║    ◉  EXIT    ──  quit program                   ║\n"
-	<< "║                                                  ║\n"
-	<< "╚══════════════════════════════════════════════════╝\n";
-
-	std::cout << "\nPlease enter a command:\n";
+	printWithColor("\n" + std::string(15, ' ') + "📞 Welcome to PhoneBook!",
+		INF);
+	std::cout << INF << "\n"
+				<< "╔══════════════════════════════════════════════════╗\n"
+				<< "║                    PHONEBOOK                     ║\n"
+				<< "╠══════════════════════════════════════════════════╣\n"
+				<< "║                                                  ║\n"
+				<< "║    ◉  ADD     ──  Add a new contact              ║\n"
+				<< "║    ◉  SEARCH  ──  display a specific contact     ║\n"
+				<< "║    ◉  EXIT    ──  quit program                   ║\n"
+				<< "║                                                  ║\n"
+				<< "╚══════════════════════════════════════════════════╝\n";
 }
 
 void	getCommand(std::string &command)
 {
-	printWithColor("> ", HYEL, false, false);
+	printWithColor("\n" + std::string(8, ' ') +
+					"====>> Please enter a command: <<====", INF);
+	printWithColor("> ", INF, NO_NEWLINE);
 	std::getline(std::cin, command);
 
-	for (size_t i = 0; i < command.length(); i++){
+	while (!command.empty() && command[command.length() - 1] == ' ') {
+		command.erase(command.length() - 1, 1);
+	}
+	while (!command.empty() && command[0] == ' ') {
+		command.erase(0, 1);
+	}
+	for (size_t i = 0; i < command.length(); i++) {
 		command[i] = std::toupper(command[i]);
 	}
 }
 
 int	main(void)
 {
-	std::string	command;
+	PhoneBook	phoneBook;
+	std::string command;
 
-	printWithColor("\n" + std::string(15, ' ') + "📞 Welcome to PhoneBook!", HCYA);
 	displayMenu();
 	while (true)
 	{
 		getCommand(command);
-		if (command == "ADD") {
-			printWithColor("ADDING CONTACT...", HGRN);
-		}
-		else if (command == "SEARCH") {
-			printWithColor("SEARCHING...", HGRN);
-		}
+		if (command == "ADD")
+			phoneBook.addContact();
+		else if (command == "SEARCH")
+			phoneBook.searchContact();
 		else if (command == "EXIT"){
-			printWithColor("Goodbye! 👋", HYEL);
-			break;
+			printWithColor("\n" + std::string(20, ' ') + "Goodbye! 👋\n", SUC);
+			break ;
 		}
-		else{
-			printWithColor(" Error: Not a valid command!", HRED);
-			printWithColor(" Valid commands : EXIT - SEARCH - ADD", HYEL);
+		else {
+			printWithColor("\n" + std::string(13, ' ') + "Error: Not a valid command!", ERR);
+			printWithColor(std::string(8, ' ') + "Valid commands : EXIT - SEARCH - ADD", WRN);
 		}
 	}
 	return (0);
 }
-
-

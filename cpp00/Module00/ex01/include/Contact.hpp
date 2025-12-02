@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:31:19 by brturcio          #+#    #+#             */
-/*   Updated: 2025/11/29 12:44:52 by brturcio         ###   ########.fr       */
+/*   Updated: 2025/12/02 20:23:50 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ class Contact
 		std::string	nickName;
 		std::string	phoneNumber;
 		std::string	darkestSecret;
-	public:
+
+		public:
+		Contact();
 		void	addFirstName(std::string fname);
 		void	addLastName(std::string lname);
 		void	addNickName(std::string nname);

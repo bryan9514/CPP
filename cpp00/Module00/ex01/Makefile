@@ -6,18 +6,18 @@
 #    By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 08:28:39 by brturcio          #+#    #+#              #
-#    Updated: 2025/11/29 13:35:29 by brturcio         ###   ########.fr        #
+#    Updated: 2025/12/02 21:56:27 by brturcio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= PhoneBook
 CC			:= c++
-CFLAGS		:= -Wall -Wextra -Werror -std=c++98
+CFLAGS		:= -Wall -Wextra -Werror -std=c++98 -g3
 
 DIR_OBJ		:= obj/
 DIR_SRCS	:= sources/
 
-SOURCES		:= main.cpp Contact.cpp
+SOURCES		:= main.cpp Contact.cpp PhoneBook.cpp
 OBJECTS		:= $(addprefix $(DIR_OBJ), $(SOURCES:.cpp=.o))
 
 INCLUDE		:= -Iinclude
