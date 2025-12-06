@@ -6,11 +6,12 @@
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 18:22:02 by brturcio          #+#    #+#             */
-/*   Updated: 2025/12/02 23:34:25 by brturcio         ###   ########.fr       */
+/*   Updated: 2025/12/06 19:16:12 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <cstdlib>
 
 PhoneBook::PhoneBook()
 {
@@ -19,31 +20,33 @@ PhoneBook::PhoneBook()
 	oldIndex = 0;
 }
 
-std::string	PhoneBook::getInput(const std::string &prompt)
+std::string	PhoneBook::getInput(const std::string &prompt) 
 {
-	std::string	input;
+  std::string input;
 
-	do
-	{
-		std::cout << HCYA << std::right << std::setw(25) << prompt << " ";
+	do {
+		std::cout << INF << std::right << std::setw(25) << prompt << " ";
 		printWithColor("> ", INF, NO_NEWLINE);
 		std::getline(std::cin, input);
+		if (std::cin.eof()) {
+			printWithColor("\nExiting...", WRN);
+			exit(0);
+		}
 		if (input.empty())
-			printWithColor(" Error: Field cannot be empty. Please try again.", HRED);
+			printWithColor(" Error: Field cannot be empty. Please try again.", ERR);
 	} while (input.empty());
-
 	return (input);
 }
 
 void	PhoneBook::addContact()
 {
-	std::string	input;
+	std::string input;
 
 	printWithColor("\n" + std::string(20, ' ') + "📝 Add Contact", INF);
 	printWithColor(std::string(52, '-') + "\n", INF);
 	if (contactCount >= MAXCONT)
-		 printWithColor(" ⚠️  PhoneBook is full! Replacing oldest contact...\n", WRN);
-	input = getInput(std::string(2, ' ') + "Enter First Name ");
+		printWithColor(" ⚠️  PhoneBook is full! Replacing oldest contact...\n", WRN);
+	input = getInput(std::string( 2, ' ') + "Enter First Name ");
 	contact[index].addFirstName(input);
 	input = getInput(std::string(2, ' ') + "Enter Last Name ");
 	contact[index].addLastName(input);
@@ -62,11 +65,20 @@ void	PhoneBook::addContact()
 	printWithColor(std::string(52, '-') + "\n", INF);
 }
 
-std::string	cutNames(std::string name)
+int	PhoneBook::checkInput(std::string &input) 
 {
-	if (name.length() > 10)
-		return (name.substr(0, 9) + ".");
-	return (name);
+	int indexInput;
+
+	indexInput = 0;
+	if (input.empty())
+		return (-1);
+	for (size_t i = 0; i < input.length(); i++)
+		if (input[i] < '0' || input[i] > '9')
+			return (-1);
+    indexInput = std::atoi(input.c_str());
+	if (indexInput < 0 || indexInput > contactCount)
+		return (-1);
+	return (indexInput);
 }
 
 void	PhoneBook::searchContact()
@@ -75,22 +87,18 @@ void	PhoneBook::searchContact()
 		printWithColor("\n📭 PhoneBook is empty. Add contacts first.", WRN);
 		return;
 	}
-	printWithColor("\n" + std::string(20, ' ') + "🔍 SEARCH CONTACTS", INF);
+	printWithColor("\n" + std::string(15, ' ') + "🔍 SEARCH CONTACTS", INF);
 	printWithColor(std::string(52, '-'), INF);
-	   std::cout << INF
-				<< " ┌──────────┬──────────┬──────────┬──────────┐\n"
-				<< " │   INDEX  │FIRST NAME│ LAST NAME│ NICKNAME │\n"
-				<< " ├──────────┼──────────┼──────────┼──────────┤\n";
-		for ( int i = 0; i < contactCount; i++){
-			std::cout << " │" << std::setw(10) << std::right << i + 1 << "│"
-			<< std::setw(10) << cutNames(contact[i].getFirstName()) << "│"
-			<< std::setw(10) << cutNames(contact[i].getLastName()) << "│"
-			<< std::setw(10) << cutNames(contact[i].getNickName()) << "│\n";
-		};
-		std::cout << " └──────────┴──────────┴──────────┴──────────┘\n" << RST;
+	std::cout << INF 
+		<< " ┌──────────┬──────────┬──────────┬──────────┐\n"
+		<< " │   INDEX  │FIRST NAME│ LAST NAME│ NICKNAME │\n"
+		<< " ├──────────┼──────────┼──────────┼──────────┤\n";
+	for (int i = 0; i < contactCount; i++) {
+		std::cout << " │" << std::setw(10) << std::right << i + 1 << "│"
+		<< std::setw(10) << cutNames(contact[i].getFirstName()) << "│"
+		<< std::setw(10) << cutNames(contact[i].getLastName()) << "│"
+		<< std::setw(10) << cutNames(contact[i].getNickName()) << "│\n";
+	};
+	std::cout << " └──────────┴──────────┴──────────┴──────────┘\n" << RST;
 	displayOneContact();
 }
-
-
-
-

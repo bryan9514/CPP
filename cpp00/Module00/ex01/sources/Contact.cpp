@@ -6,20 +6,21 @@
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:30:16 by brturcio          #+#    #+#             */
-/*   Updated: 2025/12/02 12:20:38 by brturcio         ###   ########.fr       */
+/*   Updated: 2025/12/06 18:08:01 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include <string>
 
-Contact::Contact(void){
+Contact::Contact(void)
+{
 	firstName = "";
 	lastName = "";
 	nickName = "";
 	phoneNumber = "";
 	darkestSecret = "";
 }
-
 
 void	Contact::addFirstName(std::string fname) {
 	firstName = fname;
@@ -30,35 +31,33 @@ void	Contact::addLastName(std::string lname) {
 }
 
 void	Contact::addNickName(std::string nname) {
-	nickName = nname;
+	nickName = nname; 
 }
 
-void	Contact::addPhoneNumber(std::string phone) {
-	phoneNumber = phone;
+void	Contact::addPhoneNumber(std::string phone) { 
+	phoneNumber = phone; 
 }
 
-void	Contact::addDarkestSecret(std::string secrect) {
-	darkestSecret = secrect;
+void	Contact::addDarkestSecret(std::string secrect) { 
+	darkestSecret = secrect; 
 }
 
 std::string	Contact::getFirstName() {
-	return (firstName);
+	return (firstName); 
 }
 
-std::string	Contact::getLastName() {
+std::string	Contact::getLastName() { 
 	return (lastName);
 }
 
 std::string	Contact::getNickName() {
-	return (nickName);
+	return (nickName); 
 }
 
-std::string	Contact::getPhoneNumber() {
-	return (phoneNumber);
+std::string	Contact::getPhoneNumber() { 
+	return (phoneNumber); 
 }
 
-std::string	Contact::getDarkestSecret() {
-	return (darkestSecret);
+std::string	Contact::getDarkestSecret() { 
+	return (darkestSecret); 
 }
-
-

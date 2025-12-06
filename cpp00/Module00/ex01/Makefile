@@ -6,7 +6,7 @@
 #    By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/25 08:28:39 by brturcio          #+#    #+#              #
-#    Updated: 2025/12/02 21:56:27 by brturcio         ###   ########.fr        #
+#    Updated: 2025/12/06 18:19:44 by brturcio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		:= -Wall -Wextra -Werror -std=c++98 -g3
 DIR_OBJ		:= obj/
 DIR_SRCS	:= sources/
 
-SOURCES		:= main.cpp Contact.cpp PhoneBook.cpp
+SOURCES		:= main.cpp Contact.cpp PhoneBook.cpp PhoneBookUtils.cpp
 OBJECTS		:= $(addprefix $(DIR_OBJ), $(SOURCES:.cpp=.o))
 
 INCLUDE		:= -Iinclude

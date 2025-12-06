@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 09:12:36 by brturcio          #+#    #+#             */
-/*   Updated: 2025/12/02 18:44:25 by brturcio         ###   ########.fr       */
+/*   Updated: 2025/12/06 19:16:33 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	printWithColor(const std::string &msg, const std::string &color,
 
 static void	displayMenu(void)
 {
-	printWithColor("\n" + std::string(15, ' ') + "📞 Welcome to PhoneBook!",
-		INF);
+	printWithColor("\n" + std::string(15, ' ') + "📞 Welcome to PhoneBook!", INF);
 	std::cout << INF << "\n"
 				<< "╔══════════════════════════════════════════════════╗\n"
 				<< "║                    PHONEBOOK                     ║\n"
@@ -43,11 +42,14 @@ static void	displayMenu(void)
 
 void	getCommand(std::string &command)
 {
-	printWithColor("\n" + std::string(8, ' ') +
-					"====>> Please enter a command: <<====", INF);
+	printWithColor("\n" + std::string(8, ' ') + "====>> Please enter a command: <<====", INF);
+	printWithColor(std::string(16, ' ') + "ADD - SEARCH - EXIT", INF);
 	printWithColor("> ", INF, NO_NEWLINE);
 	std::getline(std::cin, command);
-
+	if (std::cin.eof()) {
+		printWithColor("\nExiting...", WRN);
+		exit(0);
+	}
 	while (!command.empty() && command[command.length() - 1] == ' ') {
 		command.erase(command.length() - 1, 1);
 	}
@@ -72,14 +74,12 @@ int	main(void)
 			phoneBook.addContact();
 		else if (command == "SEARCH")
 			phoneBook.searchContact();
-		else if (command == "EXIT"){
+		else if (command == "EXIT") {
 			printWithColor("\n" + std::string(20, ' ') + "Goodbye! 👋\n", SUC);
 			break ;
 		}
-		else {
-			printWithColor("\n" + std::string(13, ' ') + "Error: Not a valid command!", ERR);
-			printWithColor(std::string(8, ' ') + "Valid commands : EXIT - SEARCH - ADD", WRN);
-		}
+		else 
+			printWithColor("\n" + std::string(13, ' ') + "Error: Not a valid command!", ERR);	
 	}
 	return (0);
 }
