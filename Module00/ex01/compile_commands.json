@@ -1,0 +1,74 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "obj/main.o",
+      "sources/main.cpp"
+    ],
+    "directory": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01",
+    "file": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01/sources/main.cpp",
+    "output": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01/obj/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "obj/Contact.o",
+      "sources/Contact.cpp"
+    ],
+    "directory": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01",
+    "file": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01/sources/Contact.cpp",
+    "output": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01/obj/Contact.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "obj/PhoneBook.o",
+      "sources/PhoneBook.cpp"
+    ],
+    "directory": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01",
+    "file": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01/sources/PhoneBook.cpp",
+    "output": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01/obj/PhoneBook.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "obj/PhoneBookUtils.o",
+      "sources/PhoneBookUtils.cpp"
+    ],
+    "directory": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01",
+    "file": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01/sources/PhoneBookUtils.cpp",
+    "output": "/home/bt24/42Cursus/Circle 4/CPP/cpp00/Module00/ex01/obj/PhoneBookUtils.o"
+  }
+]
