@@ -20,14 +20,16 @@ DIR_OBJS	:= obj/
 SOURCES		:= Account.cpp tests.cpp
 OBJECTS		:= $(addprefix $(DIR_OBJS), $(SOURCES:.cpp=.o))
 
+INC			:= -Iinc
+
 GREEN		= \033[0;32m
 RESET		= \033[0m
 
 all: $(NAME)
 
-$(DIR_OBJS)%.o:%.cpp Account.hpp
+$(DIR_OBJS)%.o:$(DIR_SRCS)%.cpp
 	@mkdir -p $(DIR_OBJS)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJECTS)
 	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
